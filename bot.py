@@ -29,9 +29,9 @@ def aww(bot, update):
     for i in range(len(url_list)-1):
 
         os.system(url_list[i])
-    print("joooo")
+    
     os.system(dl_string)
-    print("nooooo")
+    
     p = subprocess.Popen('find ./ -name "*.mp4"', stdout=subprocess.PIPE, shell=True)
     (output, err) = p.communicate()
     output = output.decode('utf-8')
