@@ -9,19 +9,26 @@ token = '<Insert Token here>'
 
 def aww(bot, update):
     source_list = []
+    url_list = []
     url = 'https://www.reddit.com/r/aww/'
     chat_id = update.message.chat_id
     page = requests.get(url, headers={'User-Agent':'Mozilla/5.0'})
     soup = BeautifulSoup(page.content, 'html.parser')
-    #top_source = soup.find('source')
+    
     sources = soup.findAll('source')
     bot.send_message(chat_id=chat_id, text="The top cutest Video on reddit are loading right now")
-    #dl_string ='youtube-dl ' + top_source['src']
+    
     for source in sources:
     
         source_list.append(source['src'])
     
-    dl_string ='youtube-dl ' + source_list[1]
+    for urls in source_list:
+        url_list.append('youtube-dl ' + urls)
+    
+    
+    for i in range(len(url_list)-1):
+
+        os.system(url_list[i])
     print("joooo")
     os.system(dl_string)
     print("nooooo")
@@ -31,8 +38,9 @@ def aww(bot, update):
     v = output.split('\n')
     print(v[0])
     for out in v:
-        if len(out)>=5:
-            bot.send_video(chat_id=chat_id, video=open(out, 'rb'), supports_streaming=True)    
+        if(out !='./4kx5z41u72c31-4kx5z41u72c31.mp4'):
+            if len(out)>=5:
+                bot.send_video(chat_id=chat_id, video=open(out, 'rb'), supports_streaming=True)    
     print("aww")
 
 
