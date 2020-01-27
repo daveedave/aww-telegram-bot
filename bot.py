@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import subprocess
 import os
 
-token = '<Insert Token here>'
+token = '<Insert Token Here>'
 
 def aww(bot, update):
     source_list = []
@@ -30,7 +30,7 @@ def aww(bot, update):
 
         os.system(url_list[i])
     
-    os.system(dl_string)
+    #os.system(dl_string)
     
     p = subprocess.Popen('find ./ -name "*.mp4"', stdout=subprocess.PIPE, shell=True)
     (output, err) = p.communicate()
