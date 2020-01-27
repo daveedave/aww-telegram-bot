@@ -44,11 +44,26 @@ def aww(bot, update):
     print("aww")
 
 
+def doggo(bot, update):
+    url = get_url('https://random.dog/woof.json')
+    chat_id = update.message.chat_id
+    print(url)
+    if url[-4:] == '.jpg' or url[-4:] == '.png':
+        
+        bot.send_photo(chat_id=chat_id, photo=url)
+    else:
+        bot.send_video(chat_id=chat_id, video=url, supports_streaming=True)    
+
+    print("Dog Sent")
+
+
+
 def main():
     global token
     updater = Updater(token)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler('aww',aww))
+    dp.add_handler(CommandHandler('doggo',doggo))
     updater.start_polling()
     updater.idle()
 
