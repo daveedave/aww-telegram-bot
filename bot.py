@@ -56,7 +56,10 @@ def doggo(bot, update):
 
     print("Dog Sent")
 
-
+def get_url():
+    contents = requests.get('https://random.dog/woof.json').json()    
+    url = contents['url']
+    return url
 
 def main():
     global token
