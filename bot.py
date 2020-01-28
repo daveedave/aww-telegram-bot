@@ -56,8 +56,8 @@ def doggo(bot, update):
 
     print("Dog Sent")
 
-def get_url():
-    contents = requests.get('https://random.dog/woof.json').json()    
+def get_url(s):
+    contents = requests.get(s).json()    
     url = contents['url']
     return url
 
